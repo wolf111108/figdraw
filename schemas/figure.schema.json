@@ -1,0 +1,1506 @@
+{
+  "$defs": {
+    "BarEncoding": {
+      "additionalProperties": false,
+      "properties": {
+        "x": {
+          "$ref": "#/$defs/Category"
+        },
+        "y": {
+          "$ref": "#/$defs/Numeric"
+        },
+        "series": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Category"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "interval": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Interval"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "x",
+        "y"
+      ],
+      "title": "BarEncoding",
+      "type": "object"
+    },
+    "BarOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "legend": {
+          "default": true,
+          "title": "Legend",
+          "type": "boolean"
+        },
+        "legend_location": {
+          "default": "best",
+          "enum": [
+            "best",
+            "upper left",
+            "upper right",
+            "lower left",
+            "lower right"
+          ],
+          "title": "Legend Location",
+          "type": "string"
+        },
+        "grid": {
+          "default": true,
+          "title": "Grid",
+          "type": "boolean"
+        },
+        "label_rotation": {
+          "default": 0,
+          "maximum": 90,
+          "minimum": -90,
+          "title": "Label Rotation",
+          "type": "number"
+        },
+        "annotate": {
+          "default": false,
+          "title": "Annotate",
+          "type": "boolean"
+        },
+        "orientation": {
+          "default": "vertical",
+          "enum": [
+            "vertical",
+            "horizontal"
+          ],
+          "title": "Orientation",
+          "type": "string"
+        }
+      },
+      "title": "BarOptions",
+      "type": "object"
+    },
+    "BarSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "id": {
+          "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "template": {
+          "title": "Template",
+          "type": "string"
+        },
+        "theme": {
+          "default": "paper@1.0.0",
+          "title": "Theme",
+          "type": "string"
+        },
+        "theme_file": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Theme File"
+        },
+        "template_file": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Template File"
+        },
+        "project_style": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Project Style"
+        },
+        "size": {
+          "$ref": "#/$defs/Size"
+        },
+        "labels": {
+          "$ref": "#/$defs/Labels"
+        },
+        "overrides": {
+          "$ref": "#/$defs/Overrides"
+        },
+        "output": {
+          "$ref": "#/$defs/Output"
+        },
+        "kind": {
+          "const": "bar",
+          "title": "Kind",
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/$defs/Data"
+        },
+        "encoding": {
+          "$ref": "#/$defs/BarEncoding"
+        },
+        "options": {
+          "$ref": "#/$defs/BarOptions"
+        }
+      },
+      "required": [
+        "schema_version",
+        "id",
+        "template",
+        "kind",
+        "data",
+        "encoding"
+      ],
+      "title": "BarSpec",
+      "type": "object"
+    },
+    "Category": {
+      "additionalProperties": false,
+      "properties": {
+        "field": {
+          "title": "Field",
+          "type": "string"
+        },
+        "order": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Order"
+        }
+      },
+      "required": [
+        "field"
+      ],
+      "title": "Category",
+      "type": "object"
+    },
+    "Data": {
+      "additionalProperties": false,
+      "properties": {
+        "inline": {
+          "anyOf": [
+            {
+              "items": {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Inline"
+        },
+        "source": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source"
+        },
+        "format": {
+          "anyOf": [
+            {
+              "enum": [
+                "csv",
+                "json"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Format"
+        }
+      },
+      "title": "Data",
+      "type": "object"
+    },
+    "DiagramSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "id": {
+          "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "template": {
+          "title": "Template",
+          "type": "string"
+        },
+        "theme": {
+          "default": "paper@1.0.0",
+          "title": "Theme",
+          "type": "string"
+        },
+        "theme_file": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Theme File"
+        },
+        "template_file": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Template File"
+        },
+        "project_style": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Project Style"
+        },
+        "size": {
+          "$ref": "#/$defs/Size"
+        },
+        "labels": {
+          "$ref": "#/$defs/Labels"
+        },
+        "overrides": {
+          "$ref": "#/$defs/Overrides"
+        },
+        "output": {
+          "$ref": "#/$defs/Output"
+        },
+        "kind": {
+          "enum": [
+            "flowchart",
+            "architecture"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "graph": {
+          "$ref": "#/$defs/Graph"
+        },
+        "layout": {
+          "$ref": "#/$defs/Layout"
+        }
+      },
+      "required": [
+        "schema_version",
+        "id",
+        "template",
+        "kind",
+        "graph"
+      ],
+      "title": "DiagramSpec",
+      "type": "object"
+    },
+    "Edge": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/$defs/Endpoint"
+        },
+        "target": {
+          "$ref": "#/$defs/Endpoint"
+        },
+        "role": {
+          "default": "data",
+          "enum": [
+            "data",
+            "control"
+          ],
+          "title": "Role",
+          "type": "string"
+        },
+        "label": {
+          "default": "",
+          "title": "Label",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "source",
+        "target"
+      ],
+      "title": "Edge",
+      "type": "object"
+    },
+    "Endpoint": {
+      "additionalProperties": false,
+      "properties": {
+        "node": {
+          "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*$",
+          "title": "Node",
+          "type": "string"
+        },
+        "port": {
+          "anyOf": [
+            {
+              "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Port"
+        }
+      },
+      "required": [
+        "node"
+      ],
+      "title": "Endpoint",
+      "type": "object"
+    },
+    "Graph": {
+      "additionalProperties": false,
+      "properties": {
+        "nodes": {
+          "items": {
+            "$ref": "#/$defs/Node"
+          },
+          "minItems": 1,
+          "title": "Nodes",
+          "type": "array"
+        },
+        "edges": {
+          "items": {
+            "$ref": "#/$defs/Edge"
+          },
+          "title": "Edges",
+          "type": "array"
+        },
+        "groups": {
+          "items": {
+            "$ref": "#/$defs/Group"
+          },
+          "title": "Groups",
+          "type": "array"
+        }
+      },
+      "required": [
+        "nodes"
+      ],
+      "title": "Graph",
+      "type": "object"
+    },
+    "Group": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "parent": {
+          "anyOf": [
+            {
+              "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Parent"
+        }
+      },
+      "required": [
+        "id",
+        "label"
+      ],
+      "title": "Group",
+      "type": "object"
+    },
+    "HeatEncoding": {
+      "additionalProperties": false,
+      "properties": {
+        "row": {
+          "$ref": "#/$defs/Category"
+        },
+        "column": {
+          "$ref": "#/$defs/Category"
+        },
+        "value": {
+          "$ref": "#/$defs/Numeric"
+        }
+      },
+      "required": [
+        "row",
+        "column",
+        "value"
+      ],
+      "title": "HeatEncoding",
+      "type": "object"
+    },
+    "HeatOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "annotate": {
+          "default": true,
+          "title": "Annotate",
+          "type": "boolean"
+        },
+        "missing": {
+          "default": "error",
+          "enum": [
+            "error",
+            "mask"
+          ],
+          "title": "Missing",
+          "type": "string"
+        },
+        "vmin": {
+          "title": "Vmin",
+          "type": "number"
+        },
+        "vmax": {
+          "title": "Vmax",
+          "type": "number"
+        },
+        "center": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Center"
+        },
+        "decimals": {
+          "default": 2,
+          "maximum": 6,
+          "minimum": 0,
+          "title": "Decimals",
+          "type": "integer"
+        },
+        "colorbar": {
+          "default": true,
+          "title": "Colorbar",
+          "type": "boolean"
+        },
+        "label_rotation": {
+          "default": 0,
+          "maximum": 90,
+          "minimum": -90,
+          "title": "Label Rotation",
+          "type": "number"
+        }
+      },
+      "required": [
+        "vmin",
+        "vmax"
+      ],
+      "title": "HeatOptions",
+      "type": "object"
+    },
+    "HeatmapSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "id": {
+          "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "template": {
+          "title": "Template",
+          "type": "string"
+        },
+        "theme": {
+          "default": "paper@1.0.0",
+          "title": "Theme",
+          "type": "string"
+        },
+        "theme_file": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Theme File"
+        },
+        "template_file": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Template File"
+        },
+        "project_style": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Project Style"
+        },
+        "size": {
+          "$ref": "#/$defs/Size"
+        },
+        "labels": {
+          "$ref": "#/$defs/Labels"
+        },
+        "overrides": {
+          "$ref": "#/$defs/Overrides"
+        },
+        "output": {
+          "$ref": "#/$defs/Output"
+        },
+        "kind": {
+          "const": "heatmap",
+          "title": "Kind",
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/$defs/Data"
+        },
+        "encoding": {
+          "$ref": "#/$defs/HeatEncoding"
+        },
+        "options": {
+          "$ref": "#/$defs/HeatOptions"
+        }
+      },
+      "required": [
+        "schema_version",
+        "id",
+        "template",
+        "kind",
+        "data",
+        "encoding",
+        "options"
+      ],
+      "title": "HeatmapSpec",
+      "type": "object"
+    },
+    "Interval": {
+      "additionalProperties": false,
+      "properties": {
+        "lower": {
+          "title": "Lower",
+          "type": "string"
+        },
+        "upper": {
+          "title": "Upper",
+          "type": "string"
+        },
+        "meaning": {
+          "enum": [
+            "SD",
+            "SEM",
+            "CI",
+            "range"
+          ],
+          "title": "Meaning",
+          "type": "string"
+        },
+        "confidence": {
+          "anyOf": [
+            {
+              "exclusiveMaximum": 1,
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Confidence"
+        },
+        "sample_size": {
+          "exclusiveMinimum": 0,
+          "title": "Sample Size",
+          "type": "integer"
+        },
+        "method": {
+          "minLength": 1,
+          "title": "Method",
+          "type": "string"
+        }
+      },
+      "required": [
+        "lower",
+        "upper",
+        "meaning",
+        "sample_size",
+        "method"
+      ],
+      "title": "Interval",
+      "type": "object"
+    },
+    "Labels": {
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "default": "",
+          "title": "Title",
+          "type": "string"
+        },
+        "x": {
+          "default": "",
+          "title": "X",
+          "type": "string"
+        },
+        "y": {
+          "default": "",
+          "title": "Y",
+          "type": "string"
+        }
+      },
+      "title": "Labels",
+      "type": "object"
+    },
+    "Layout": {
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "default": "auto",
+          "enum": [
+            "auto",
+            "template",
+            "fixed"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "engine": {
+          "const": "elk",
+          "default": "elk",
+          "title": "Engine",
+          "type": "string"
+        },
+        "direction": {
+          "default": "right",
+          "enum": [
+            "right",
+            "down",
+            "left",
+            "up"
+          ],
+          "title": "Direction",
+          "type": "string"
+        },
+        "routing": {
+          "const": "orthogonal",
+          "default": "orthogonal",
+          "title": "Routing",
+          "type": "string"
+        },
+        "source": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source"
+        },
+        "spacing_pt": {
+          "default": 28,
+          "minimum": 12,
+          "title": "Spacing Pt",
+          "type": "number"
+        },
+        "seed": {
+          "default": 1,
+          "title": "Seed",
+          "type": "integer"
+        },
+        "template": {
+          "const": "pipeline",
+          "default": "pipeline",
+          "title": "Template",
+          "type": "string"
+        }
+      },
+      "title": "Layout",
+      "type": "object"
+    },
+    "LineEncoding": {
+      "additionalProperties": false,
+      "properties": {
+        "x": {
+          "$ref": "#/$defs/Numeric"
+        },
+        "y": {
+          "$ref": "#/$defs/Numeric"
+        },
+        "series": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Category"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "x",
+        "y"
+      ],
+      "title": "LineEncoding",
+      "type": "object"
+    },
+    "LineOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "legend": {
+          "default": true,
+          "title": "Legend",
+          "type": "boolean"
+        },
+        "legend_location": {
+          "default": "best",
+          "enum": [
+            "best",
+            "upper left",
+            "upper right",
+            "lower left",
+            "lower right"
+          ],
+          "title": "Legend Location",
+          "type": "string"
+        },
+        "grid": {
+          "default": true,
+          "title": "Grid",
+          "type": "boolean"
+        },
+        "label_rotation": {
+          "default": 0,
+          "maximum": 90,
+          "minimum": -90,
+          "title": "Label Rotation",
+          "type": "number"
+        },
+        "sort_x": {
+          "default": false,
+          "title": "Sort X",
+          "type": "boolean"
+        },
+        "missing": {
+          "default": "error",
+          "enum": [
+            "error",
+            "gap"
+          ],
+          "title": "Missing",
+          "type": "string"
+        }
+      },
+      "title": "LineOptions",
+      "type": "object"
+    },
+    "LineSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "id": {
+          "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "template": {
+          "title": "Template",
+          "type": "string"
+        },
+        "theme": {
+          "default": "paper@1.0.0",
+          "title": "Theme",
+          "type": "string"
+        },
+        "theme_file": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Theme File"
+        },
+        "template_file": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Template File"
+        },
+        "project_style": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Project Style"
+        },
+        "size": {
+          "$ref": "#/$defs/Size"
+        },
+        "labels": {
+          "$ref": "#/$defs/Labels"
+        },
+        "overrides": {
+          "$ref": "#/$defs/Overrides"
+        },
+        "output": {
+          "$ref": "#/$defs/Output"
+        },
+        "kind": {
+          "const": "line",
+          "title": "Kind",
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/$defs/Data"
+        },
+        "encoding": {
+          "$ref": "#/$defs/LineEncoding"
+        },
+        "options": {
+          "$ref": "#/$defs/LineOptions"
+        }
+      },
+      "required": [
+        "schema_version",
+        "id",
+        "template",
+        "kind",
+        "data",
+        "encoding"
+      ],
+      "title": "LineSpec",
+      "type": "object"
+    },
+    "Node": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "component": {
+          "default": "block",
+          "enum": [
+            "block",
+            "memory",
+            "register",
+            "mux",
+            "dsp",
+            "pe",
+            "pe_array",
+            "controller",
+            "accumulator",
+            "decision",
+            "junction"
+          ],
+          "title": "Component",
+          "type": "string"
+        },
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "group": {
+          "anyOf": [
+            {
+              "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Group"
+        },
+        "ports": {
+          "items": {
+            "$ref": "#/$defs/Port"
+          },
+          "title": "Ports",
+          "type": "array"
+        },
+        "width_pt": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Width Pt"
+        },
+        "height_pt": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Height Pt"
+        }
+      },
+      "required": [
+        "id",
+        "label"
+      ],
+      "title": "Node",
+      "type": "object"
+    },
+    "Numeric": {
+      "additionalProperties": false,
+      "properties": {
+        "field": {
+          "title": "Field",
+          "type": "string"
+        },
+        "unit": {
+          "default": "number",
+          "enum": [
+            "number",
+            "ratio",
+            "percent"
+          ],
+          "title": "Unit",
+          "type": "string"
+        },
+        "domain": {
+          "anyOf": [
+            {
+              "maxItems": 2,
+              "minItems": 2,
+              "prefixItems": [
+                {
+                  "type": "number"
+                },
+                {
+                  "type": "number"
+                }
+              ],
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Domain"
+        },
+        "format": {
+          "default": "number",
+          "enum": [
+            "number",
+            "percent"
+          ],
+          "title": "Format",
+          "type": "string"
+        },
+        "scale": {
+          "default": "linear",
+          "enum": [
+            "linear",
+            "log"
+          ],
+          "title": "Scale",
+          "type": "string"
+        }
+      },
+      "required": [
+        "field"
+      ],
+      "title": "Numeric",
+      "type": "object"
+    },
+    "Offset": {
+      "additionalProperties": false,
+      "properties": {
+        "dx_pt": {
+          "default": 0,
+          "title": "Dx Pt",
+          "type": "number"
+        },
+        "dy_pt": {
+          "default": 0,
+          "title": "Dy Pt",
+          "type": "number"
+        }
+      },
+      "title": "Offset",
+      "type": "object"
+    },
+    "Output": {
+      "additionalProperties": false,
+      "properties": {
+        "formats": {
+          "items": {
+            "enum": [
+              "svg",
+              "pdf",
+              "png"
+            ],
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Formats",
+          "type": "array"
+        },
+        "dpi": {
+          "default": 300,
+          "maximum": 1200,
+          "minimum": 72,
+          "title": "Dpi",
+          "type": "integer"
+        },
+        "directory": {
+          "default": "output",
+          "title": "Directory",
+          "type": "string"
+        },
+        "text_mode": {
+          "default": "editable",
+          "enum": [
+            "editable",
+            "outline"
+          ],
+          "title": "Text Mode",
+          "type": "string"
+        }
+      },
+      "title": "Output",
+      "type": "object"
+    },
+    "Overrides": {
+      "additionalProperties": false,
+      "properties": {
+        "series": {
+          "additionalProperties": {
+            "$ref": "#/$defs/SeriesStyle"
+          },
+          "title": "Series",
+          "type": "object"
+        },
+        "labels": {
+          "additionalProperties": {
+            "$ref": "#/$defs/Offset"
+          },
+          "title": "Labels",
+          "type": "object"
+        }
+      },
+      "title": "Overrides",
+      "type": "object"
+    },
+    "PieEncoding": {
+      "additionalProperties": false,
+      "properties": {
+        "category": {
+          "$ref": "#/$defs/Category"
+        },
+        "value": {
+          "$ref": "#/$defs/Numeric"
+        }
+      },
+      "required": [
+        "category",
+        "value"
+      ],
+      "title": "PieEncoding",
+      "type": "object"
+    },
+    "PieOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "normalize": {
+          "default": true,
+          "title": "Normalize",
+          "type": "boolean"
+        },
+        "decimals": {
+          "default": 1,
+          "maximum": 4,
+          "minimum": 0,
+          "title": "Decimals",
+          "type": "integer"
+        },
+        "startangle": {
+          "default": 90,
+          "title": "Startangle",
+          "type": "number"
+        }
+      },
+      "title": "PieOptions",
+      "type": "object"
+    },
+    "PieSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "id": {
+          "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "template": {
+          "title": "Template",
+          "type": "string"
+        },
+        "theme": {
+          "default": "paper@1.0.0",
+          "title": "Theme",
+          "type": "string"
+        },
+        "theme_file": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Theme File"
+        },
+        "template_file": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Template File"
+        },
+        "project_style": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Project Style"
+        },
+        "size": {
+          "$ref": "#/$defs/Size"
+        },
+        "labels": {
+          "$ref": "#/$defs/Labels"
+        },
+        "overrides": {
+          "$ref": "#/$defs/Overrides"
+        },
+        "output": {
+          "$ref": "#/$defs/Output"
+        },
+        "kind": {
+          "const": "pie",
+          "title": "Kind",
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/$defs/Data"
+        },
+        "encoding": {
+          "$ref": "#/$defs/PieEncoding"
+        },
+        "options": {
+          "$ref": "#/$defs/PieOptions"
+        }
+      },
+      "required": [
+        "schema_version",
+        "id",
+        "template",
+        "kind",
+        "data",
+        "encoding"
+      ],
+      "title": "PieSpec",
+      "type": "object"
+    },
+    "Port": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "side": {
+          "enum": [
+            "east",
+            "west",
+            "north",
+            "south"
+          ],
+          "title": "Side",
+          "type": "string"
+        },
+        "direction": {
+          "enum": [
+            "input",
+            "output",
+            "inout"
+          ],
+          "title": "Direction",
+          "type": "string"
+        },
+        "width_bits": {
+          "default": 1,
+          "exclusiveMinimum": 0,
+          "title": "Width Bits",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "side",
+        "direction"
+      ],
+      "title": "Port",
+      "type": "object"
+    },
+    "SeriesStyle": {
+      "additionalProperties": false,
+      "properties": {
+        "color": {
+          "title": "Color",
+          "type": "string"
+        },
+        "label": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Label"
+        },
+        "marker": {
+          "default": "o",
+          "title": "Marker",
+          "type": "string"
+        },
+        "linestyle": {
+          "default": "-",
+          "enum": [
+            "-",
+            "--",
+            "-.",
+            ":"
+          ],
+          "title": "Linestyle",
+          "type": "string"
+        },
+        "hatch": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Hatch"
+        }
+      },
+      "required": [
+        "color"
+      ],
+      "title": "SeriesStyle",
+      "type": "object"
+    },
+    "Size": {
+      "additionalProperties": false,
+      "properties": {
+        "width_mm": {
+          "default": 85,
+          "exclusiveMinimum": 0,
+          "maximum": 2000,
+          "title": "Width Mm",
+          "type": "number"
+        },
+        "height_mm": {
+          "default": 55,
+          "exclusiveMinimum": 0,
+          "maximum": 2000,
+          "title": "Height Mm",
+          "type": "number"
+        }
+      },
+      "title": "Size",
+      "type": "object"
+    }
+  },
+  "discriminator": {
+    "mapping": {
+      "architecture": "#/$defs/DiagramSpec",
+      "bar": "#/$defs/BarSpec",
+      "flowchart": "#/$defs/DiagramSpec",
+      "heatmap": "#/$defs/HeatmapSpec",
+      "line": "#/$defs/LineSpec",
+      "pie": "#/$defs/PieSpec"
+    },
+    "propertyName": "kind"
+  },
+  "oneOf": [
+    {
+      "$ref": "#/$defs/BarSpec"
+    },
+    {
+      "$ref": "#/$defs/LineSpec"
+    },
+    {
+      "$ref": "#/$defs/HeatmapSpec"
+    },
+    {
+      "$ref": "#/$defs/PieSpec"
+    },
+    {
+      "$ref": "#/$defs/DiagramSpec"
+    }
+  ]
+}

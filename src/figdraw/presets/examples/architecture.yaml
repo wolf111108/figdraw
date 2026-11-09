@@ -1,0 +1,70 @@
+# Synthetic demonstration data; not experimental results.
+schema_version: 1
+id: pe_datapath
+kind: architecture
+template: architecture.block@1.0.0
+theme: paper@1.0.0
+size:
+  width_mm: 175
+  height_mm: 75
+graph:
+  groups:
+  - id: compute
+    label: Compute tile
+  nodes:
+  - id: act_buffer
+    component: memory
+    label: 'Activation
+
+      Buffer'
+    ports:
+    - id: out
+      side: east
+      direction: output
+      width_bits: 128
+  - id: pe_array
+    group: compute
+    component: pe_array
+    label: PE Array
+    ports:
+    - id: act
+      side: west
+      direction: input
+      width_bits: 128
+    - id: result
+      side: east
+      direction: output
+      width_bits: 32
+  - id: accumulator
+    group: compute
+    component: accumulator
+    label: Accumulator
+    ports:
+    - id: in
+      side: west
+      direction: input
+      width_bits: 32
+  edges:
+  - id: activation_bus
+    source:
+      node: act_buffer
+      port: out
+    target:
+      node: pe_array
+      port: act
+    role: data
+    label: 128-bit
+  - id: result_bus
+    source:
+      node: pe_array
+      port: result
+    target:
+      node: accumulator
+      port: in
+    role: data
+    label: 32-bit
+layout:
+  mode: auto
+  engine: elk
+  direction: right
+  routing: orthogonal

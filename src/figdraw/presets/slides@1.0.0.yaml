@@ -1,0 +1,12 @@
+id: slides@1.0.0
+typography: {family: DejaVu Sans, size_pt: 14, title_pt: 17, math_font: dejavusans}
+line_pt: 1.2
+data_line_pt: 2
+padding_pt: 16
+series:
+  default: {color: '#3B6FB6'}
+  baseline: {color: '#8892A0', label: Baseline, marker: s}
+  proposed: {color: '#3B6FB6', label: Proposed}
+  activation: {color: '#4B9B8F', label: Activation}
+  weight: {color: '#9D7BB5', label: Weight}
+  other: {color: '#D3D9E2', label: Other}

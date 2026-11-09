@@ -1,0 +1,33 @@
+name: Validate and render
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: ${{ matrix.python }}
+          enable-cache: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: packages/elk-worker/package-lock.json
+      - run: sudo apt-get update && sudo apt-get install -y libcairo2
+      - run: uv sync --locked --extra diagrams
+      - run: npm ci --prefix packages/elk-worker
+      - run: uv run ruff check .
+      - run: uv run ruff format --check .
+      - run: uv run pytest -q
+      - run: uv run figdraw build examples/paper.yaml
+      - run: uv build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: figures-python-${{ matrix.python }}
+          path: output/

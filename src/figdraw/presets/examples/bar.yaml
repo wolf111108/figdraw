@@ -1,0 +1,46 @@
+# Synthetic demonstration data; not experimental results.
+schema_version: 1
+id: goal_success
+kind: bar
+template: bar.grouped@1.0.0
+theme: paper@1.0.0
+size:
+  width_mm: 120
+  height_mm: 75
+data:
+  inline:
+  - task: Task A
+    method: baseline
+    success: 0.8
+  - task: Task A
+    method: proposed
+    success: 0.86
+  - task: Task B
+    method: baseline
+    success: 0.72
+  - task: Task B
+    method: proposed
+    success: 0.79
+encoding:
+  x:
+    field: task
+    order:
+    - Task A
+    - Task B
+  y:
+    field: success
+    unit: ratio
+    domain:
+    - 0
+    - 1
+    format: percent
+  series:
+    field: method
+    order:
+    - baseline
+    - proposed
+labels:
+  x: Task
+  y: Success rate
+options:
+  legend_location: upper right

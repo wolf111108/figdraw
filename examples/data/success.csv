@@ -1,0 +1,5 @@
+task,method,success
+Task A,baseline,0.80
+Task A,proposed,0.86
+Task B,baseline,0.72
+Task B,proposed,0.79

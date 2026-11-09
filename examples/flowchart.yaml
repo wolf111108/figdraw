@@ -1,0 +1,57 @@
+# Synthetic demonstration data; not experimental results.
+schema_version: 1
+id: experiment_flow
+kind: flowchart
+template: flowchart.standard@1.0.0
+theme: paper@1.0.0
+size:
+  width_mm: 145
+  height_mm: 110
+graph:
+  nodes:
+  - id: load
+    label: Load data
+  - id: validate
+    label: Valid?
+    component: decision
+  - id: render
+    label: Render figure
+  - id: fix
+    label: Correct input
+  - id: export
+    label: Export PDF / SVG / PNG
+  edges:
+  - id: load_validate
+    source:
+      node: load
+    target:
+      node: validate
+  - id: valid
+    source:
+      node: validate
+    target:
+      node: render
+    label: 'yes'
+  - id: invalid
+    source:
+      node: validate
+    target:
+      node: fix
+    label: 'no'
+    role: control
+  - id: retry
+    source:
+      node: fix
+    target:
+      node: load
+    role: control
+  - id: done
+    source:
+      node: render
+    target:
+      node: export
+layout:
+  mode: auto
+  engine: elk
+  direction: down
+  routing: orthogonal

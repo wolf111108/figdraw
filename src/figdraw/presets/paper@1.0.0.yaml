@@ -1,0 +1,11 @@
+id: paper@1.0.0
+typography: {family: DejaVu Sans, size_pt: 8, title_pt: 9, math_font: dejavusans}
+series:
+  default: {color: '#3B6FB6'}
+  baseline: {color: '#8892A0', label: Baseline, marker: s}
+  proposed: {color: '#3B6FB6', label: Proposed}
+  packing_2x2: {color: '#3B6FB6', label: '2×2 packing'}
+  packing_2x3: {color: '#D68942', label: '2×3 packing', marker: '^'}
+  activation: {color: '#4B9B8F', label: Activation}
+  weight: {color: '#9D7BB5', label: Weight}
+  other: {color: '#D3D9E2', label: Other}

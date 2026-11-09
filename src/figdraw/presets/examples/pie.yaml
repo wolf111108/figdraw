@@ -1,0 +1,27 @@
+# Synthetic demonstration data; not experimental results.
+schema_version: 1
+id: memory_share
+kind: pie
+template: pie.standard@1.0.0
+theme: paper@1.0.0
+size:
+  width_mm: 120
+  height_mm: 75
+data:
+  inline:
+  - category: activation
+    bytes: 36
+  - category: weight
+    bytes: 56
+  - category: other
+    bytes: 8
+encoding:
+  category:
+    field: category
+  value:
+    field: bytes
+options:
+  normalize: true
+  decimals: 0
+labels:
+  title: Memory footprint

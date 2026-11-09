@@ -1,0 +1,13 @@
+schema_version: 1
+figures:
+- bar.yaml
+- line.yaml
+- heatmap.yaml
+- pie.yaml
+- flowchart.yaml
+- architecture.yaml
+- bar_interval.yaml
+- bar_stacked.yaml
+- pipeline.yaml
+- bar_csv.yaml
+output_directory: ../output

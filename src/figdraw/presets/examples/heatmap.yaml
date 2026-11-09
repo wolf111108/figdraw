@@ -1,0 +1,52 @@
+# Synthetic demonstration data; not experimental results.
+schema_version: 1
+id: similarity
+kind: heatmap
+template: heatmap.annotated@1.0.0
+theme: paper@1.0.0
+size:
+  width_mm: 120
+  height_mm: 75
+data:
+  inline:
+  - model: Model A
+    task: Task A
+    score: 0.91
+  - model: Model A
+    task: Task B
+    score: 0.72
+  - model: Model A
+    task: Task C
+    score: 0.64
+  - model: Model B
+    task: Task A
+    score: 0.7
+  - model: Model B
+    task: Task B
+    score: 0.88
+  - model: Model B
+    task: Task C
+    score: 0.63
+  - model: Model C
+    task: Task A
+    score: 0.66
+  - model: Model C
+    task: Task B
+    score: 0.71
+  - model: Model C
+    task: Task C
+    score: 0.94
+encoding:
+  row:
+    field: model
+  column:
+    field: task
+  value:
+    field: score
+    unit: ratio
+options:
+  vmin: 0
+  vmax: 1
+  decimals: 2
+labels:
+  title: Task performance

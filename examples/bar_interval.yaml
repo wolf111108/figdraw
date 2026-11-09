@@ -1,0 +1,62 @@
+# Synthetic demonstration.
+schema_version: 1
+id: confidence_intervals
+kind: bar
+template: bar.grouped@1.0.0
+theme: paper@1.0.0
+size:
+  width_mm: 120
+  height_mm: 75
+data:
+  inline:
+  - task: Task A
+    method: baseline
+    success: 0.8
+    lower: 0.765
+    upper: 0.8350000000000001
+  - task: Task A
+    method: proposed
+    success: 0.86
+    lower: 0.825
+    upper: 0.895
+  - task: Task B
+    method: baseline
+    success: 0.72
+    lower: 0.6849999999999999
+    upper: 0.755
+  - task: Task B
+    method: proposed
+    success: 0.79
+    lower: 0.755
+    upper: 0.8250000000000001
+encoding:
+  x:
+    field: task
+    order:
+    - Task A
+    - Task B
+  y:
+    field: success
+    unit: ratio
+    domain:
+    - 0
+    - 1
+    format: percent
+  series:
+    field: method
+    order:
+    - baseline
+    - proposed
+  interval:
+    lower: lower
+    upper: upper
+    meaning: CI
+    confidence: 0.95
+    sample_size: 200
+    method: Synthetic illustrative bounds (not computed observations)
+labels:
+  x: Task
+  y: Success rate
+  title: Illustrative 95% CI
+options:
+  legend_location: upper right

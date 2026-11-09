@@ -1,0 +1,44 @@
+# Synthetic demonstration.
+schema_version: 1
+id: stacked_resources
+kind: bar
+template: bar.stacked@1.0.0
+theme: paper@1.0.0
+size:
+  width_mm: 120
+  height_mm: 75
+data:
+  inline:
+  - task: Task A
+    method: baseline
+    success: 0.8
+  - task: Task A
+    method: proposed
+    success: 0.86
+  - task: Task B
+    method: baseline
+    success: 0.72
+  - task: Task B
+    method: proposed
+    success: 0.79
+encoding:
+  x:
+    field: task
+    order:
+    - Task A
+    - Task B
+  y:
+    field: success
+    domain:
+    - 0
+    - 2
+  series:
+    field: method
+    order:
+    - baseline
+    - proposed
+labels:
+  y: Resources
+  x: Task
+options:
+  annotate: true

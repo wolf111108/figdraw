@@ -1,0 +1,8 @@
+{
+  "name": "figdraw-elk-worker",
+  "version": "0.1.0",
+  "private": true,
+  "description": "JSON stdin/stdout layout worker for figdraw",
+  "engines": {"node": ">=20"},
+  "dependencies": {"elkjs": "0.12.1"}
+}
